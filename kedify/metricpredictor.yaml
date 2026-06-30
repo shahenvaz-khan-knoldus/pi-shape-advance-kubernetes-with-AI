@@ -1,0 +1,16 @@
+kind: MetricPredictor
+apiVersion: keda.kedify.io/v1alpha1
+metadata:
+  name: mm-in-ten
+  namespace: default
+spec:
+  source:
+    oneShotCsv:
+      url: https://shahenvazblobstorage.blob.core.windows.net/pi-shape-container/website_traffic_4weeks_30s.csv
+      addTimestamps: true
+      timestampPeriod: 30s
+  model:
+    type: Prophet
+    name: mm-in-ten
+    defaultHorizon: 10m
+    retrainInterval: 1m

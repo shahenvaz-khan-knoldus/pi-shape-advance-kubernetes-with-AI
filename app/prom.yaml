@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: flask-app
+spec:
+  selector:
+    matchLabels:
+      app: http-app
+  endpoints:
+  - port: "5000"
+    path: /metrics
+    interval: 15s

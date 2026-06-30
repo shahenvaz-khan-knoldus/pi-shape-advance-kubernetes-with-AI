@@ -1,0 +1,25 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: mm
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: http-app
+  pollingInterval: 10
+  cooldownPeriod: 5
+  minReplicaCount: 1
+  maxReplicaCount: 6
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleUp:
+          stabilizationWindowSeconds: 0
+        scaleDown:
+          stabilizationWindowSeconds: 0
+  triggers:
+    - type: kedify-predictive
+      name: mmInTenMinutes
+      metadata:
+        modelName: mm-in-ten
+        targetValue: "400"
