@@ -13,7 +13,7 @@ This repository contains all the materials that is required for the assignment w
 
 ## Minikube Setup for local development: Install Minikube and other tools with some configuration (If not using cloud provided kubernetes service such as AKS/GKE/EKS)
 
-** Download Minikube in you local machine**
+**Download Minikube in you local machine**
 
 ```bash
 
@@ -88,6 +88,7 @@ Before installing it you need to create an azure account and setup model deploym
 **Add you AZURE OPENAI Environment variables**
 
 ```export AZURE_OPENAI_ENDPOINT="replace it with actual AZURE OPENAI ENDPOINT"```
+
 ```export AZURE_OPENAI_API_KEY="replace it with AZURE OPENAI API KEY"```
 
   
@@ -111,3 +112,20 @@ get all the deployments
 get all the pods
 
 ```
+
+## Kedify
+
+  
+
+- visit https://kedify.io/
+
+- Click on Sign In button
+
+- Click on Sign Up and enter your details
+
+- Once Account create is done In the dashboard select Cluster option
+
+- Then click on Connect Cluster this will provide you kubectl apply command like this
+
+``` kubectl apply -f manifests_url```
+
