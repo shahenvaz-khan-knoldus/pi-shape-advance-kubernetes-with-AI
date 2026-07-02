@@ -1,30 +1,19 @@
 # Pyshape
 
-  
-
 This repository contains all the materials that is required for the assignment with everything explained step by step
 
-  
 
 ## Prequisites
 
-Docker must be installed in your WSL https://docs.docker.com/engine/install/ubuntu/
+- Docker must be installed in your WSL https://docs.docker.com/engine/install/ubuntu/
 
-  
-
-Azure account with azure AI foundry setup
+- Azure account with azure AI foundry setup
 
 ---
 
-  
-
 ## Minikube Setup for local development: Install Minikube and other tools with some configuration (If not using cloud provided kubernetes service such as AKS/GKE/EKS)
 
-  
-
 ** Download Minikube in you local machine**
-
-  
 
 ```bash
 
