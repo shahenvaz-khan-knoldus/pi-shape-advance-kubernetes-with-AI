@@ -6,11 +6,10 @@ metadata:
 spec:
   source:
     oneShotCsv:
-      url: https://shahenvazblobstorage.blob.core.windows.net/pi-shape-container/website_traffic_4weeks_30s.csv
+      url: https://shahenvazblobstorage.blob.core.windows.net/pi-shape-container/1-day-0-request.csv
       addTimestamps: true
       timestampPeriod: 30s
   model:
     type: Prophet
     name: mm-in-ten
     defaultHorizon: 10m
-    retrainInterval: 1m

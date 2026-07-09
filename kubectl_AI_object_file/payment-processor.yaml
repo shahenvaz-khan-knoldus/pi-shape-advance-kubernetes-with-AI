@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-processor
+  namespace: default
+  labels:
+    app: payment-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-processor
+  template:
+    metadata:
+      labels:
+        app: payment-processor
+    spec:
+      containers:
+      - name: processor
+        image: busybox:1.36
+        command: ["sh", "-c"]
+        args:
+        - |
+          echo "Starting payment-processor microservice v1.0.0..."
+          sleep 1
+          echo "Database Host Configured: $DB_HOST"
+          echo "Attempting to connect to database at $DB_HOST:5432..."
+          sleep 2
+          # Attempt connection check
+          nc -z -w 3 "$DB_HOST" 5432
+          if [ $? -ne 0 ]; then
+            echo "[ERROR] Database service at '$DB_HOST:5432' is unreachable."
+            echo "[CRITICAL] Unable to initialize db connection. Exiting."
+            exit 1
+          fi
+          echo "Database connection successful!"
+          # Keep running if successful
+          tail -f /dev/null
+        env:
+        - name: DB_HOST
+          value: "postgres-d-service"
+        ports:
+        - containerPort: 8080
